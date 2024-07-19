@@ -1,0 +1,453 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --clr-blue: #00a2ff;
+    --clr-bg: #dbdbdb;
+    --clr-border: #00a2ff;
+    --clr-hover: #ffffff;
+    --clr-white: #003B62;
+}
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--clr-bg);
+    color: var(--clr-white);
+    padding: 20px;
+    animation: bg-animation 15s linear infinite;
+}
+
+@keyframes bg-animation {
+    0% { background-color: #00a2ff; }
+    25% { background-color: #003B62; }
+    50% { background-color: #00a2ff; }
+    75% { background-color: #003B62; }
+    100% { background-color: #00a2ff; }
+}
+
+/* Logo */
+.logo {
+    margin-bottom: 20px;
+}
+
+/* General box styles */
+.box {
+    position: relative;
+    width: 380px;
+    background: var(--clr-light-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 162, 255, 0.5);
+    margin-bottom: 20px;
+}
+
+.box:before, .box:after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, transparent, var(--clr-blue), var(--clr-blue), var(--clr-blue));
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+
+.box:after {
+    animation-delay: -3s;
+}
+
+.borderLine:before, .borderLine:after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, transparent, var(--clr-border), var(--clr-border), var(--clr-border));
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+
+.borderLine:after {
+    animation-delay: -4.5s;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.box form {
+    position: absolute;
+    inset: 4px;
+    background: var(--clr-bg);
+    padding: 50px 40px;
+    border-radius: 8px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.box form h2 {
+    color: var(--clr-white);
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+}
+
+.box form .inputBox {
+    position: relative;
+    width: 100%;
+    margin-top: 35px;
+}
+
+.box form .inputBox input {
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    outline: none;
+    border: 2px solid var(--clr-border);
+    border-radius: 5px;
+    color: var(--clr-white);
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+}
+
+.box form .inputBox input:focus {
+    border-color: var(--clr-hover);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.box form .inputBox span {
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    pointer-events: none;
+    color: #003B62;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+}
+
+.box form .inputBox input:valid ~ span,
+.box form .inputBox input:focus ~ span {
+    color: var(--clr-white);
+    font-size: 0.75em;
+    transform: translateY(-34px);
+}
+
+.box form .inputBox i {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--clr-white);
+    border-radius: 4px;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.box form .inputBox input:valid ~ i,
+.box form .inputBox input:focus ~ i {
+    height: 44px;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box form .links a {
+    margin: 10px 0;
+    font-size: 0.75em;
+    color: #003B62;
+    text-decoration: none;
+}
+
+.box form .links a:hover,
+.box form .links a:nth-child(2) {
+    color: var(--clr-white);
+}
+
+.submit-wrapper {
+    display: flex;
+    justify-content: center; /* Centre les boutons horizontalement */
+    gap: 15px; /* Espacement entre les boutons */
+    margin-top: 20px; /* Espace supérieur pour les boutons */
+}
+
+.submit-btn {
+    padding: 12px 20px;
+    background-color: #00a2ff;
+    color: #003B62;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.submit-btn:hover {
+    transform: scale(1.05);
+    background-color: var(--clr-hover);
+    color: var(--clr-white);
+}
+
+.submit-btn:active {
+    transform: scale(0.95);
+}
+
+/* Styles spécifiques pour chaque section de détails */
+.details-box {
+    background-color: var(--clr-blue);
+    color: var(--clr-white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(21, 162, 255);
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+}
+
+.details-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(0, 81, 187, 0.712);
+}
+
+.details-box h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.details-box1 {
+    margin-bottom: 20px;
+    border: 1px solid #003B62;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.details-box1 h2 {
+    margin-bottom: 10px;
+}
+
+.details {
+    padding-left: 20px; /* Ajustement pour décaler les légendes */
+}
+
+.details fieldset {
+    border: none;
+    margin-bottom: 10px;
+}
+
+.details legend {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.details label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--clr-white); /* Étiquettes en blanc */
+}
+
+.details label input {
+    margin-right: 5px;
+}
+
+.details-box1 h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color:white;
+    text-align: center;
+    padding: 13px 750px;
+    margin-top: 60px;
+    border-radius: 0 0 8px 8px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: var(--clr-blue);
+}
+
+.green-bg {
+    color:#003B62; /* Couleur de texte blanche pour un meilleur contraste */
+    transition: background-color 0.5s ease;
+}
+
+.red-bg {
+    color: #003B62; /* Couleur de texte blanche pour un meilleur contraste */
+    transition: background-color 0.5s ease;
+}
+
+.icon {
+    margin-left: 5px;
+}
+
+/* Stylisation des légendes des fieldsets */
+fieldset legend {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #003B62;
+    margin-bottom: 1rem;
+}
+
+/* Stylisation des labels des options */
+fieldset label {
+    display: inline-block;
+    margin-right: 15px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 2px solid transparent;
+    color: var(--clr-white); /* Étiquettes en blanc */
+}
+
+/* Stylisation des radios pour les rendre invisibles */
+fieldset input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+}
+
+/* Stylisation des radios au survol */
+fieldset label:hover {
+    color: #ffffff;
+}
+
+/* Effet de transition pour les radios et les labels */
+fieldset label,
+fieldset input[type="radio"] {
+    transition: all 0.3s ease;
+}
+
+/* Animation pour le bouton Soumettre */
+.submit-btn {
+    padding: 12px 20px;
+    background-color:#003B62;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    margin: 10px; /* Ajoute un espacement autour du bouton */
+}
+
+.submit-btn:hover {
+    transform: scale(1.05);
+    background-color: var(--clr-hover);
+    color: var(--clr-white);
+}
+
+.submit-btn:active {
+    transform: scale(0.95);
+}
+
+/* Stylisation pour les détails-box */
+.details-box1 {
+    margin-bottom: 20px;
+    border: 1px solid #003B62;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.details-box1 h2 {
+    background-color: #00a2ff;
+    color: #003B62;
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    margin: 0;
+}
+
+.details-box1 .btn {
+    background-color: #003B62;
+    color: #ffffff;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.details-box1 .details {
+    padding: 10px 15px;
+}
+
+.details-box1 fieldset {
+    margin-bottom: 15px;
+}
+
+.flooter{
+    color : white ; 
+}
+
+.hidden {
+    display: none;
+}
+
+.text-container {
+    transition: all 0.3s ease;
+}
+
+.submit-btn {
+    padding: 10px 20px;
+    background-color: #003B62;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    animation: bounce 1s infinite; /* Animation active par défaut */
+}
+
+/*Suggestion de la barre de recherche*/
+.suggestions {
+    border: 1px solid #ddd;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+    position: absolute;
+    background-color: white;
+    width: calc(100% - 2rem); /* Adjust width to fit the form-control */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it's above other elements */
+}
+
+.suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}

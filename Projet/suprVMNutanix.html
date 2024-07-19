@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Métadonnées de base -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Titre de la page -->
+    <title>Création de Machine Virtuelle</title>
+
+    <!-- Feuilles de style -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header de la page -->
+    <header class="mb-4 d-flex justify-content-between align-items-center">
+        <img src="assets/april-mutuelle-logo.png" alt="Logo" class="logo mx-auto d-block">
+    </header>
+
+    <!-- Contenu principal -->
+    <main>
+        <div class="container">
+            <div class="details-box p-4">
+                <!-- Titre principal -->
+                <h1 class="text-center mb-4">CRÉATION DE MACHINE VIRTUELLE</h1>
+
+                <!-- Bouton de retour à l'accueil -->
+                <a href="accueil.html" class="submit-btn">Accueil</a>
+
+                <!-- Bouton toggle pour les détails -->
+                <div class="btn main-btn bounce-btn mx-auto d-block mb-4" id="btn1">
+                    <ion-icon name="chevron-down"></ion-icon>
+                </div>
+
+                <!-- Section des détails -->
+                <div class="details" id="details1">
+                    <!-- Formulaire de création -->
+                    <form action="process.php" method="post" id="creationForm">
+                        <div class="details-box1 p-4 mb-4">
+                            <!-- Titre du formulaire -->
+                            <h2 class="text-center mb-4">NUTANIX</h2>
+
+                            <!-- Légende pour le groupe de sélection -->
+                            <fieldset class="mb-4">
+                                <legend>Sélectionnez la machine virtuelle que vous voulez supprimer:</legend>
+
+                                <!-- Grille pour les champs de saisie -->
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <!-- Sélection de l'environnement -->
+                                        <label>
+                                            <select name="environnement" class="form-select" id="environnement" required>
+                                                <option value="">Sélectionnez un environnement</option>
+                                                <option value="Developpement">Développement</option>
+                                                <option value="Recette">Recette</option>
+                                                <option value="Preproduction">Préproduction</option>
+                                                <option value="Infrastructure">Infrastructure</option>
+                                                <option value="Production">Production</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <!-- Sélection du type de serveur -->
+                                        <label>
+                                            <select name="type_serveur" class="form-select" id="type_serveur" required>
+                                                <option value="">Sélectionnez un type de serveur</option>
+                                                <option value="Windows_Server">Windows Server</option>
+                                                <option value="RedHat_Entreprise">RedHat Entreprise</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <!-- Sélection du composant -->
+                                        <label>
+                                            <select name="composant" class="form-select" id="composant" required>
+                                                <option value="">Sélectionnez un composant</option>
+                                                <option value="APP">Application (APP)</option>
+                                                <option value="SQL">Base de données SQL</option>
+                                                <option value="WEB">Serveur Web (WEB)</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <!-- Sélection du nom de la machine virtuelle -->
+                                        <label>
+                                            <select name="Nom_VM" class="form-select" id="NomVM" required>
+                                                <option value="">Nom de la Machine Virtuelle</option>
+                                                <!-- Options filtrées par environnement -->
+                                                <!-- Options pour Developpement -->
+                                                <option value="DEVXXXSQL-VLIXX" data-environment="Developpement" data-os="RedHat_Entreprise" data-component="SQL">DEVXXXSQL-VLIXX</option>
+                                                <option value="DEVXXXSQL-22XX" data-environment="Developpement" data-os="Windows_Server" data-component="SQL">DEVXXXSQL-22XX</option>
+                                                <option value="DEVXXXAPP-VLIXX" data-environment="Developpement" data-os="RedHat_Entreprise" data-component="APP">DEVXXXAPP-VLIXX</option>
+                                                <option value="DEVXXXAPP-22XX" data-environment="Developpement" data-os="Windows_Server" data-component="APP">DEVXXXAPP-22XX</option>
+                                                <option value="DEVXXXWEB-VLIXX" data-environment="Developpement" data-os="RedHat_Entreprise" data-component="WEB">DEVXXXWEB-VLIXX</option>
+                                                <option value="DEVXXXWEB-22XX" data-environment="Developpement" data-os="Windows_Server" data-component="WEB">DEVXXXWEB-22XX</option>
+                                                <!-- Option pour Recette -->
+                                                <option value="RECXXXSQL-VLIXX" data-environment="Recette" data-os="RedHat_Entreprise" data-component="SQL">RECXXXSQL-VLIXX</option>
+                                                <option value="RECXXXSQL-22XX" data-environment="Recette" data-os="Windows_Server" data-component="SQL">RECXXXSQL-22XX</option>
+                                                <option value="RECXXXAPP-VLIXX" data-environment="Recette" data-os="RedHat_Entreprise" data-component="APP">RECXXXAPP-VLIXX</option>
+                                                <option value="RECXXXAPP-22XX" data-environment="Recette" data-os="Windows_Server" data-component="APP">RECXXXAPP-22XX</option>
+                                                <option value="RECXXXWEB-VLIXX" data-environment="Recette" data-os="RedHat_Entreprise" data-component="WEB">RECXXXWEB-VLIXX</option>
+                                                <option value="RECXXXWEB-22XX" data-environment="Recette" data-os="Windows_Server" data-component="WEB">RECXXXWEB-22XX</option>
+                                                <!-- Options pour Infrastructure -->
+                                                <option value="INFXXXSQL-VLIXX" data-environment="Infrastructure" data-os="RedHat_Entreprise" data-component="SQL">INFXXXSQL-VLIXX</option>
+                                                <option value="INFXXXSQL-22XX" data-environment="Infrastructure" data-os="Windows_Server" data-component="SQL">INFXXXSQL-22XX</option>
+                                                <option value="INFXXXAPP-VLIXX" data-environment="Infrastructure" data-os="RedHat_Entreprise" data-component="APP">INFXXXAPP-VLIXX</option>
+                                                <option value="INFXXXAPP-22XX" data-environment="Infrastructure" data-os="Windows_Server" data-component="APP">INFXXXAPP-22XX</option>
+                                                <option value="INFXXXWEB-VLIXX" data-environment="Infrastructure" data-os="RedHat_Entreprise" data-component="WEB">INFXXXWEB-VLIXX</option>
+                                                <option value="INFXXXWEB-22XX" data-environment="Infrastructure" data-os="Windows_Server" data-component="WEB">INFXXXWEB-22XX</option>
+                                                <!-- Options pour Preproduction -->
+                                                <option value="PPRXXXSQL-VLIXX" data-environment="Preproduction" data-os="RedHat_Entreprise" data-component="SQL">PPRXXXSQL-VLIXX</option>
+                                                <option value="PPRXXXSQL-22XX" data-environment="Preproduction" data-os="Windows_Server" data-component="SQL">PPRXXXSQL-22XX</option>
+                                                <option value="PPRXXXAPP-VLIXX" data-environment="Preproduction" data-os="RedHat_Entreprise" data-component="APP">PPRXXXAPP-VLIXX</option>
+                                                <option value="PPRXXXAPP-22XX" data-environment="Preproduction" data-os="Windows_Server" data-component="APP">PPRXXXAPP-22XX</option>
+                                                <option value="PPRXXXWEB-VLIXX" data-environment="Preproduction" data-os="RedHat_Entreprise" data-component="WEB">PPRXXXWEB-VLIXX</option>
+                                                <option value="PPRXXXWEB-22XX" data-environment="Preproduction" data-os="Windows_Server" data-component="WEB">PPRXXXWEB-22XX</option>
+                                                <!-- Options pour Production -->
+                                                <option value="PROXXXSQL-VLIXX" data-environment="Production" data-os="RedHat_Entreprise" data-component="SQL">PROXXXSQL-VLIXX</option>
+                                                <option value="PROXXXSQL-22XX" data-environment="Production" data-os="Windows_Server" data-component="SQL">PROXXXSQL-22XX</option>
+                                                <option value="PROXXXAPP-VLIXX" data-environment="Production" data-os="RedHat_Entreprise" data-component="APP">PROXXXAPP-VLIXX</option>
+                                                <option value="PROXXXAPP-22XX" data-environment="Production" data-os="Windows_Server" data-component="APP">PROXXXAPP-22XX</option>
+                                                <option value="PROXXXWEB-VLIXX" data-environment="Production" data-os="RedHat_Entreprise" data-component="WEB">PROXXXWEB-VLIXX</option>
+                                                <option value="PROXXXWEB-22XX" data-environment="Production" data-os="Windows_Server" data-component="WEB">PROXXXWEB-22XX</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="text-item text-center">
+                            <button type="submit" class="submit-btn">Soumettre</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Script pour le comportement de la page -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const environnementSelect = document.getElementById('environnement');
+            const typeServeurSelect = document.getElementById('type_serveur');
+            const composantSelect = document.getElementById('composant');
+            const nomVMSelect = document.getElementById('NomVM');
+
+            // Fonction pour filtrer et sélectionner automatiquement l'option de Nom_VM
+            function filterNomVMOptions() {
+                const selectedEnvironment = environnementSelect.value;
+                const selectedOS = typeServeurSelect.value;
+                const selectedComponent = composantSelect.value;
+
+                let firstMatch = null;
+
+                // Parcourir toutes les options de Nom_VM
+                for (const option of nomVMSelect.options) {
+                    const optionEnvironment = option.getAttribute('data-environment');
+                    const optionOS = option.getAttribute('data-os');
+                    const optionComponent = option.getAttribute('data-component');
+
+                    if (
+                        (!selectedEnvironment || optionEnvironment === selectedEnvironment) &&
+                        (!selectedOS || optionOS === selectedOS) &&
+                        (!selectedComponent || optionComponent === selectedComponent)
+                    ) {
+                        option.style.display = 'block';
+                        if (!firstMatch) {
+                            firstMatch = option;
+                        }
+                    } else {
+                        option.style.display = 'none';
+                    }
+                }
+
+                // Sélectionner automatiquement la première option correspondante
+                if (firstMatch) {
+                    nomVMSelect.value = firstMatch.value;
+                } else {
+                    nomVMSelect.value = '';
+                }
+            }
+
+            // Ajouter des écouteurs d'événements aux sélections
+            environnementSelect.addEventListener('change', filterNomVMOptions);
+            typeServeurSelect.addEventListener('change', filterNomVMOptions);
+            composantSelect.addEventListener('change', filterNomVMOptions);
+
+            // Appeler la fonction de filtrage lors du chargement de la page
+            filterNomVMOptions();
+        });
+    </script>
+</body>
+
+</html>
